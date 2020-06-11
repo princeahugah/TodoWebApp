@@ -46,7 +46,7 @@ pipeline {
       }
       steps {
         sh 'sed -i "s/GIT_COMMIT_ID/${GIT_COMMIT_ID}/g" dist/js/*.js'
-        sh 'sed -i "s/__USERS_API_ENDPOINT_PLACEHOLDER__/${__TASKS_API_ENDPOINT_PLACEHOLDER__}/g" dist/js/*.js'
+        sh 'sed -i "s/__USERS_API_ENDPOINT_PLACEHOLDER__/${__USERS_API_ENDPOINT_PLACEHOLDER__}/g" dist/js/*.js'
         sh 'sed -i "s/__TASKS_API_ENDPOINT_PLACEHOLDER__/${__TASKS_API_ENDPOINT_PLACEHOLDER__}/g" dist/js/*.js'
         sh './deploy.sh'
 
