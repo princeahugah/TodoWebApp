@@ -18,6 +18,8 @@ yarn start
 yarn build
 ```
 
+Move build files in dist directory to your web server and you should be able to access the app
+
 ### Lints and fixes files
 
 ```
