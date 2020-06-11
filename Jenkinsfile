@@ -41,8 +41,8 @@ pipeline {
 
     stage('Deploy') {
       environment {
-        __USERS_API_ENDPOINT_PLACEHOLDER__ = 'http:\\/\\/95.179.201.200:3001\\/api/users'
-        __TASKS_API_ENDPOINT_PLACEHOLDER__ = 'http:\\/\\/95.179.201.200:3002\\/api/tasks'
+        __USERS_API_ENDPOINT_PLACEHOLDER__ = 'http:\\/\\/95.179.201.200:3001\\/api\\/users'
+        __TASKS_API_ENDPOINT_PLACEHOLDER__ = 'http:\\/\\/95.179.201.200:3002\\/api\\/tasks'
       }
       steps {
         sh 'sed -i "s/GIT_COMMIT_ID/${GIT_COMMIT_ID}/g" dist/js/*.js'
