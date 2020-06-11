@@ -147,12 +147,20 @@
     }
 
     deleteTask() {
+      if (!this.selectedTask[0]) {
+        this.displaySnackbar("Please select a task by checking the box by the task's name to delete", 'warning');
+        return;
+      }
       this.taskToDelete = this.selectedTask[0];
       this.deleteDialog = true;
     }
 
     editTask() {
       const task = this.selectedTask[0];
+      if (!task) {
+        this.displaySnackbar("Please select a task by checking the box by the task's name to update", 'warning');
+        return;
+      }
       this.editedIndex = this.tasks.indexOf(task);
       this.editedTask = Object.assign({}, task);
       this.dialog = true;
