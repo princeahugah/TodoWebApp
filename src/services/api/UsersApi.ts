@@ -12,6 +12,10 @@ export default class UsersApi {
     return axios.get(`${baseURL}`).then((resp) => resp.data);
   }
 
+  static async getUser(userId: string) {
+    return axios.get(`${baseURL}/${userId}`).then((resp) => resp.data);
+  }
+
   static async saveUser(user: IUser) {
     if (user.id) {
       return axios.put(`${baseURL}/${user.id}`, { name: user.name }).then((resp) => resp.data);

@@ -3,7 +3,7 @@
         <v-row>
             <v-col cols="12">
                 <todo-toolbar :toolbarActions="toolbarActions"
-                              toolbarTitle="Todo Tasks" />
+                              :toolbarTitle="`${userName}'s Tasks`" />
             </v-col>
         </v-row>
         <v-row>
@@ -50,6 +50,7 @@
   import { IToolbarActions, ITask } from '../services/interfaces/todo.interface';
   import TasksApi from '../services/api/TasksApi';
   import { mdiPlaylistPlus, mdiPlaylistEdit, mdiPlaylistRemove, mdiArrowLeft } from '@mdi/js';
+  import UsersApi from '../services/api/UsersApi';
 
   @Component({
     components: { TodoToolbar, TodoTaskContent },
@@ -58,6 +59,7 @@
     }
   })
   export default class TodoTasks extends Vue {
+    userName = '';
     dialog = false;
     deleteDialog = false;
     taskToDelete: ITask | null = null;
@@ -115,6 +117,11 @@
     ];
 
     async created() {
+      const user = await UsersApi.getUser(this.$route.params.userId);
+      if (!user) {
+        this.$router.push('/todo');
+      }
+      this.userName = user.name;
       this.tasks = await TasksApi.getTasks(this.$route.params.userId);
     }
 
