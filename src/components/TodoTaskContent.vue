@@ -19,7 +19,7 @@
                       v-model="selectedTaskModel"
                       multi-sort>
             <template v-slot:top>
-                <add-item-dialog :hasState="true"
+                <add-item-dialog :hasState="!!editedTask.id"
                                  v-model="addInputDialog"
                                  :dialogHeaderTitle="`${editedTask.id ? 'Updating Task' : 'Adding Task'}`"
                                  :editedItem="editedTask"
