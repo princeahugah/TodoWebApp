@@ -8,11 +8,11 @@ if (process.env.NODE_ENV === 'development') {
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 export default class TasksApi {
-  static async getTasks(userId: string) {
+  static async getTasks(userId: string): Promise<ITask[]> {
     return axios.get(`${baseURL}/${userId}`).then((resp) => resp.data);
   }
 
-  static async saveTask(task: ITask) {
+  static async saveTask(task: ITask): Promise<ITask> {
     if (task.id) {
       return axios
         .put(`${baseURL}/${task.id}`, { description: task.description, state: task.state, userId: task.userId })
@@ -24,7 +24,7 @@ export default class TasksApi {
     }
   }
 
-  static async deleteTask(taskId: string) {
+  static async deleteTask(taskId: string): Promise<number> {
     return axios.delete(`${baseURL}/${taskId}`).then((resp) => resp.data);
   }
 }

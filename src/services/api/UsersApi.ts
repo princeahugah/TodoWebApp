@@ -8,15 +8,15 @@ if (process.env.NODE_ENV === 'development') {
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 export default class UsersApi {
-  static async getUsers() {
+  static async getUsers(): Promise<IUser[]> {
     return axios.get(`${baseURL}`).then((resp) => resp.data);
   }
 
-  static async getUser(userId: string) {
+  static async getUser(userId: string): Promise<IUser> {
     return axios.get(`${baseURL}/${userId}`).then((resp) => resp.data);
   }
 
-  static async saveUser(user: IUser) {
+  static async saveUser(user: IUser): Promise<IUser> {
     if (user.id) {
       return axios.put(`${baseURL}/${user.id}`, { name: user.name }).then((resp) => resp.data);
     } else {
@@ -24,7 +24,7 @@ export default class UsersApi {
     }
   }
 
-  static async deleteUser(userId: string) {
+  static async deleteUser(userId: string): Promise<number> {
     return axios.delete(`${baseURL}/${userId}`).then((resp) => resp.data);
   }
 }
