@@ -11,6 +11,8 @@
                     <v-row>
                         <v-col cols="12">
                             <v-text-field v-model="inputModel"
+                                          autocomplete="off"
+                                          dense
                                           @keyup.enter="save"
                                           ref="inputField"
                                           hide-details

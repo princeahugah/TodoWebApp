@@ -3,10 +3,11 @@
         <v-card-title>
             <v-text-field v-model="searchValue"
                           :append-icon="mdiMagnify"
+                          autocomplete="off"
+                          dense
                           ref="searchInput"
                           label="Search"
-                          single-line
-                          hide-details />
+                          single-line />
         </v-card-title>
         <v-data-table item-key="id"
                       :loading="loading"
@@ -59,7 +60,7 @@
   import AddItemDialog from './AddItemDialog.vue';
 
   @Component({
-    components: { DeleteDialog, AddItemDialog }
+    components: { DeleteDialog, AddItemDialog },
   })
   export default class TodoUserContent extends Vue {
     @Prop({ default: false }) dialog: boolean;
@@ -83,17 +84,17 @@
       { text: 'Name', value: 'nameId', width: '40%' },
       { text: 'Number of Assigned Tasks', value: 'assignedTasks' },
       { text: 'Created On', value: 'createdAt' },
-      { text: 'Last Modified Date', value: 'updatedAt' }
+      { text: 'Last Modified Date', value: 'updatedAt' },
     ];
 
     get tableItems() {
-      return this.users.map(item => {
+      return this.users.map((item) => {
         return {
           ...item,
           nameId: {
             name: item.name,
-            id: item.id
-          }
+            id: item.id,
+          },
         };
       });
     }

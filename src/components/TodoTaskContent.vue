@@ -3,10 +3,11 @@
         <v-card-title>
             <v-text-field v-model="searchValue"
                           :append-icon="mdiMagnify"
+                          autocomplete="off"
+                          dense
                           ref="searchInput"
                           label="Search"
-                          single-line
-                          hide-details />
+                          single-line />
         </v-card-title>
         <v-data-table item-key="id"
                       :loading="loading"
@@ -56,7 +57,7 @@
   import AddItemDialog from './AddItemDialog.vue';
 
   @Component({
-    components: { DeleteDialog, AddItemDialog }
+    components: { DeleteDialog, AddItemDialog },
   })
   export default class TodoTaskContent extends Vue {
     @Prop({ default: false }) dialog: boolean;
@@ -80,7 +81,7 @@
       { text: 'Task Description', value: 'description', width: '40%' },
       { text: 'State', value: 'state' },
       { text: 'Created On', value: 'createdAt' },
-      { text: 'Last Modified Date', value: 'updatedAt' }
+      { text: 'Last Modified Date', value: 'updatedAt' },
     ];
 
     setInputValue(value: string) {
