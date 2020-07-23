@@ -1,35 +1,46 @@
 .v-text-field {
-  input {
-    background-color: transparent !important;
-    font-size: 1.4rem;
-    font-weight: 400;
-  }
+    input {
+        background-color: transparent !important;
+        font-size: 1.4rem;
+        font-weight: 400;
+        min-height: 40px;
+        max-height: 40px !important;
+    }
+
+    .v-input__append-inner {
+        align-self: center;
+    }
 }
+
 .v-data-table {
-  &.clickable {
+    &.clickable {
+        tbody {
+            td {
+                cursor: pointer;
+            }
+        }
+    }
+
+    thead {
+        th {
+            font-size: 14px;
+        }
+    }
+
     tbody {
-      td {
-        cursor: pointer;
-      }
+        td {
+            font-size: 16px;
+            font-weight: 500;
+
+            .v-chip {
+                line-height: 0.9rem;
+                height: auto;
+                font-size: 0.64rem;
+            }
+
+            a {
+                text-decoration: none;
+            }
+        }
     }
-  }
-  thead {
-    th {
-      font-size: 14px;
-    }
-  }
-  tbody {
-    td {
-      font-size: 16px;
-      font-weight: 500;
-      .v-chip {
-        line-height: 0.9rem;
-        height: auto;
-        font-size: 0.64rem;
-      }
-      a {
-        text-decoration: none;
-      }
-    }
-  }
 }
