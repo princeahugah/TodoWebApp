@@ -37,4 +37,4 @@ See a screenshot of a jenkins build job below. It logs the status of the build t
 
 ![Jenkins Slack](https://github.com/princeahugah/TodoWebApp/blob/master/jenkins-slack.png?raw=true)
 
-You can access the [web app here](http://95.179.201.200:3000/)
+You can access the [web app here](http://todo.princeahugah.com/)
